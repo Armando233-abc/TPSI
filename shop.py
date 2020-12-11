@@ -101,7 +101,7 @@ def compro_quaderni():
                 sys.exit()
 
 
-for i in range(5):
+for i in range(10):
     fatturato(x1=guadagno_matite, x2=guadagno_quaderni)
     scorte_magazino(matite=magazzino_matite, quaderni=magazzino_quaderni)
     t = threading.Thread(target=scelta_articolo())
@@ -118,13 +118,14 @@ scorte_magazino(matite=magazzino_matite, quaderni=magazzino_quaderni)
 scelta = input("vuoi vedere i grafici? S/N ")
 
 if scelta.lower() == "s":
-    stampa()
 
     print(f"Il guadagno di oggi è stato di {guadagno_quaderni+guadagno_matite}")
 
     print(f"Con le matite hai guadagnato {guadagno_matite}")
 
     print(f"Con i quaderni hai guadagnato {guadagno_quaderni}")
+
+    stampa()
 
 else:
     print("arrivederci")

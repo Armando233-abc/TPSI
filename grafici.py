@@ -23,7 +23,6 @@ def stampa():
 
 def guadagni():
     x = np.arange(0, len(guadagno_matite))
-
     plt.title("Fatturato")
     plt.plot(x, guadagno_matite, label="matite")
     plt.plot(x, guadagno_quaderni, label="quaderni")
@@ -33,10 +32,11 @@ def guadagni():
 
 def scorte():
     x = np.arange(0, len(guadagno_matite))
-
+    width = 0.35  # the width of the bars
     plt.title("scorte")
-    plt.bar(x, scorte_matite, label="matite")
-    plt.bar(x, scorte_quaderni, label="quaderni")
+    plt.bar(x - width/2, scorte_matite, width=width, label="matite")
+    plt.bar(x + width/2, scorte_quaderni, width=width, label="quaderni")
     plt.grid()
     plt.legend()
     plt.show()
+
