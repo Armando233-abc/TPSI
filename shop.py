@@ -2,6 +2,7 @@ import threading
 import time
 import sys
 import random
+from grafici import grafico
 guadagno_quaderni=0
 guadagno_matite=0
 
