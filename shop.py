@@ -2,7 +2,10 @@ import threading
 import time
 import sys
 import random
-from grafici import grafico
+import os
+from grafici import fatturato, scorte_magazino, stampa
+
+
 guadagno_quaderni=0
 guadagno_matite=0
 
@@ -98,13 +101,30 @@ def compro_quaderni():
                 sys.exit()
 
 
-for i in range(10):
+for i in range(5):
+    fatturato(x1=guadagno_matite, x2=guadagno_quaderni)
+    scorte_magazino(matite=magazzino_matite, quaderni=magazzino_quaderni)
     t = threading.Thread(target=scelta_articolo())
     t.start()
     t.join()
 
-print(f"Il guadagno di oggi è stato di {guadagno_quaderni+guadagno_matite}")
+    os.system("cls")
+    
 
-print(f"Con le matite hai guadagnato {guadagno_matite}")
 
-print(f"Con i quaderni hai guadagnato {guadagno_quaderni}")
+fatturato(x1=guadagno_matite, x2=guadagno_quaderni)
+scorte_magazino(matite=magazzino_matite, quaderni=magazzino_quaderni)
+
+scelta = input("vuoi vedere i grafici? S/N ")
+
+if scelta.lower() == "s":
+    stampa()
+
+    print(f"Il guadagno di oggi è stato di {guadagno_quaderni+guadagno_matite}")
+
+    print(f"Con le matite hai guadagnato {guadagno_matite}")
+
+    print(f"Con i quaderni hai guadagnato {guadagno_quaderni}")
+
+else:
+    print("arrivederci")
